@@ -1,0 +1,5 @@
+geometry_msgs/PoseStamped target_pose_robot
+---
+---
+string stat
+geometry_msgs/Pose position
