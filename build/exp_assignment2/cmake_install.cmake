@@ -33,7 +33,10 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/exp_assignment2/action" TYPE FILE FILES "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/src/exp_assignment2/action/Planning.action")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/exp_assignment2/action" TYPE FILE FILES
+    "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/src/exp_assignment2/action/Planning.action"
+    "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/src/exp_assignment2/action/PlanningBall.action"
+    )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
@@ -45,6 +48,18 @@ if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
     "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningGoal.msg"
     "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningResult.msg"
     "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningFeedback.msg"
+    )
+endif()
+
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/exp_assignment2/msg" TYPE FILE FILES
+    "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningBallAction.msg"
+    "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningBallActionGoal.msg"
+    "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningBallActionResult.msg"
+    "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningBallActionFeedback.msg"
+    "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningBallGoal.msg"
+    "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningBallResult.msg"
+    "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningBallFeedback.msg"
     )
 endif()
 
@@ -101,6 +116,8 @@ if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
     "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/src/exp_assignment2/scripts/go_to_point_action.py"
     "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/src/exp_assignment2/scripts/motion_client.py"
     "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/src/exp_assignment2/scripts/cmd_man.py"
+    "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/src/exp_assignment2/scripts/head_control.py"
+    "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/src/exp_assignment2/scripts/BallDetection.py"
     )
 endif()
 

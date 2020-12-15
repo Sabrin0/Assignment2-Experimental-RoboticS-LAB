@@ -8,6 +8,9 @@
 
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel:$CMAKE_PREFIX_PATH"
+export LD_LIBRARY_PATH="/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/lib:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD='/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/build'
+export PYTHONPATH="/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/lib/python2.7/dist-packages:$PYTHONPATH"
 export ROSLISP_PACKAGE_DIRECTORIES='/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/common-lisp'
 export ROS_PACKAGE_PATH="/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/src:$ROS_PACKAGE_PATH"

@@ -21,7 +21,7 @@ import random
 import sys
 import rospy
 import actionlib
-from std_msgs.msg import String
+from std_msgs.msg import String #Float64
 from exp_assignment2.msg import *
 from geometry_msgs.msg import Twist, Point, Pose
 from nav_msgs.msg import Odometry

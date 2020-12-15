@@ -111,8 +111,8 @@ def planning(goal):
     rate = rospy.Rate(20)
     success = True
 
-    feedback = exp_assignment2.msg.PlanningFeedback()
-    result = exp_assignment2.msg.PlanningResult()
+    feedback = exp_assignment2.msg.PlanningBallFeedback()
+    result = exp_assignment2.msg.PlanningBallResult()
 
     while not rospy.is_shutdown():
         if act_s.is_preempt_requested():
@@ -147,7 +147,7 @@ def main():
     pubz = rospy.Publisher('/gazebo/set_link_state', LinkState, queue_size=1)
     sub_odom = rospy.Subscriber('odom', Odometry, clbk_odom)
     act_s = actionlib.SimpleActionServer(
-        '/reaching_goal', exp_assignment2.msg.PlanningAction, planning, auto_start=False)
+        '/reaching_goal', exp_assignment2.msg.PlanningBallAction, planning, auto_start=False)
     act_s.start()
 
     rate = rospy.Rate(20)

@@ -2,6 +2,13 @@ from ._PlanningAction import *
 from ._PlanningActionFeedback import *
 from ._PlanningActionGoal import *
 from ._PlanningActionResult import *
+from ._PlanningBallAction import *
+from ._PlanningBallActionFeedback import *
+from ._PlanningBallActionGoal import *
+from ._PlanningBallActionResult import *
+from ._PlanningBallFeedback import *
+from ._PlanningBallGoal import *
+from ._PlanningBallResult import *
 from ._PlanningFeedback import *
 from ._PlanningGoal import *
 from ._PlanningResult import *

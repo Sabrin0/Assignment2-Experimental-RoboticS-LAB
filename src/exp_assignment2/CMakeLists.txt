@@ -74,7 +74,7 @@ find_package (OpenCV REQUIRED)
  add_action_files(
    FILES
    Planning.action
-#   PlanningBall.action
+   PlanningBall.action
 #   Action2.action
  )
 
@@ -182,6 +182,8 @@ include_directories(
    scripts/go_to_point_action.py
    scripts/motion_client.py
    scripts/cmd_man.py
+   scripts/head_control.py
+   scripts/BallDetection.py
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
  )
 

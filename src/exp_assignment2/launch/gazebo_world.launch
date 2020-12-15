@@ -69,7 +69,9 @@
         joint_head_controller
         --shutdown-timeout 3">
     </node>
-    <node name = "go_to_point_action" pkg="exp_assignment2" type="go_to_point_action.py" output="screen"/>
+
+    <!-- <node name = "go_to_point_action" pkg="exp_assignment2" type="go_to_point_action.py" output="screen"/> -->
+    <!-- <node name = "BallDetection" pkg="exp_assignment2" type="BallDetection.py" /> -->
     <!-- <node name = "motion_client" pkg="exp_assignment2" type="motion_client.py"  output="screen" /> -->
   </group>
   
