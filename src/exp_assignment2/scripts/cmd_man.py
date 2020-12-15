@@ -17,11 +17,12 @@ import rospy
 import smach
 import smach_ros
 import time
+import math
 import random
 import sys
 import rospy
 import actionlib
-from std_msgs.msg import String #Float64
+from std_msgs.msg import String, Float64
 from exp_assignment2.msg import *
 from geometry_msgs.msg import Twist, Point, Pose
 from nav_msgs.msg import Odometry
@@ -50,9 +51,28 @@ def decision():
     """! return random state between GoTonormal or GoToSleep"""
     return random.choice(['GoToNormal','GoToSleep'])
 
+def head_control():
+
+    pub = rospy.Publisher('/robot/joint_head_controller/command', Float64, queue_size=1)
+    rate = rospy.Rate(1)
+    ctrl_c = False
+      
+    while not ctrl_c:
+        ## Check the connection in ordet to be sure to publish
+        connections = pub.get_num_connections()
+        if connections > 0:    
+            for i in [-math.pi/4, 0 , math.pi/4, 0]:
+                position_head = i
+                rospy.loginfo(position_head)
+                pub.publish(position_head)
+                time.sleep(3)
+                ctrl_c = True
+            else:
+                ## If the connection is 0 sleep and restart the loop
+                rate.sleep()
 
 
-def callback_pos(data):
+# def callback_pos(data):
     """! Callback related to target position
     @param x_pos x positon of the robot
     @param y_pos y position of the robot
@@ -125,6 +145,9 @@ class Normal(smach.State):
             #return client.get_result()
             client.wait_for_result()
             rospy.loginfo('i m arrived')
+            rospy.loginfo('Checking around...')
+            head_control()
+            print('Nothing interesting')
             self.counter += 1
 
         return 'GoToSleep'
@@ -207,7 +230,6 @@ def main():
     
     rospy.init_node('smach_example_state_machine')
     client.wait_for_server()
-
     ## Node subscribes to chatter topic
     ## rospy.Subscriber('chatter', String, callback_user)
     ## Node subscribes to position_xy topic
