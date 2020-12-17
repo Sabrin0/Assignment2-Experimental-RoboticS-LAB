@@ -400,6 +400,19 @@ _exp_assignment2_generate_messages_check_deps_PlanningBallActionResult/fast:
 .PHONY : _exp_assignment2_generate_messages_check_deps_PlanningBallActionResult/fast
 
 #=============================================================================
+# Target rules for targets named _exp_assignment2_generate_messages_check_deps_BallState
+
+# Build rule for target.
+_exp_assignment2_generate_messages_check_deps_BallState: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _exp_assignment2_generate_messages_check_deps_BallState
+.PHONY : _exp_assignment2_generate_messages_check_deps_BallState
+
+# fast build rule for target.
+_exp_assignment2_generate_messages_check_deps_BallState/fast:
+	$(MAKE) -f exp_assignment2/CMakeFiles/_exp_assignment2_generate_messages_check_deps_BallState.dir/build.make exp_assignment2/CMakeFiles/_exp_assignment2_generate_messages_check_deps_BallState.dir/build
+.PHONY : _exp_assignment2_generate_messages_check_deps_BallState/fast
+
+#=============================================================================
 # Target rules for targets named _exp_assignment2_generate_messages_check_deps_PlanningBallActionFeedback
 
 # Build rule for target.
@@ -1288,6 +1301,7 @@ help:
 	@echo "... exp_assignment2_generate_messages_cpp"
 	@echo "... _exp_assignment2_generate_messages_check_deps_PlanningAction"
 	@echo "... _exp_assignment2_generate_messages_check_deps_PlanningBallActionResult"
+	@echo "... _exp_assignment2_generate_messages_check_deps_BallState"
 	@echo "... _exp_assignment2_generate_messages_check_deps_PlanningBallActionFeedback"
 	@echo "... _exp_assignment2_generate_messages_check_deps_PlanningBallAction"
 	@echo "... _exp_assignment2_generate_messages_check_deps_PlanningBallGoal"

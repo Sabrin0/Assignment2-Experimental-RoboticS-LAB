@@ -8,6 +8,7 @@ file(REMOVE_RECURSE
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/common-lisp/ros/exp_assignment2/msg/PlanningBallGoal.lisp"
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/common-lisp/ros/exp_assignment2/msg/PlanningBallAction.lisp"
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/common-lisp/ros/exp_assignment2/msg/PlanningBallActionGoal.lisp"
+  "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/common-lisp/ros/exp_assignment2/msg/BallState.lisp"
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/common-lisp/ros/exp_assignment2/msg/PlanningActionResult.lisp"
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/common-lisp/ros/exp_assignment2/msg/PlanningResult.lisp"
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/common-lisp/ros/exp_assignment2/msg/PlanningBallActionResult.lisp"

@@ -1,6 +1,8 @@
 (cl:defpackage exp_assignment2-msg
   (:use )
   (:export
+   "<BALLSTATE>"
+   "BALLSTATE"
    "<PLANNINGACTION>"
    "PLANNINGACTION"
    "<PLANNINGACTIONFEEDBACK>"

@@ -8,6 +8,7 @@ file(REMOVE_RECURSE
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/lib/python2.7/dist-packages/exp_assignment2/msg/_PlanningBallGoal.py"
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/lib/python2.7/dist-packages/exp_assignment2/msg/_PlanningBallAction.py"
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/lib/python2.7/dist-packages/exp_assignment2/msg/_PlanningBallActionGoal.py"
+  "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/lib/python2.7/dist-packages/exp_assignment2/msg/_BallState.py"
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/lib/python2.7/dist-packages/exp_assignment2/msg/_PlanningActionResult.py"
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/lib/python2.7/dist-packages/exp_assignment2/msg/_PlanningResult.py"
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/lib/python2.7/dist-packages/exp_assignment2/msg/_PlanningBallActionResult.py"

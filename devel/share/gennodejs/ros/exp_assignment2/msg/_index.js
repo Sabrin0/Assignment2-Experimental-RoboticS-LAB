@@ -1,6 +1,7 @@
 
 "use strict";
 
+let BallState = require('./BallState.js');
 let PlanningResult = require('./PlanningResult.js');
 let PlanningBallFeedback = require('./PlanningBallFeedback.js');
 let PlanningBallActionResult = require('./PlanningBallActionResult.js');
@@ -17,6 +18,7 @@ let PlanningActionResult = require('./PlanningActionResult.js');
 let PlanningAction = require('./PlanningAction.js');
 
 module.exports = {
+  BallState: BallState,
   PlanningResult: PlanningResult,
   PlanningBallFeedback: PlanningBallFeedback,
   PlanningBallActionResult: PlanningBallActionResult,

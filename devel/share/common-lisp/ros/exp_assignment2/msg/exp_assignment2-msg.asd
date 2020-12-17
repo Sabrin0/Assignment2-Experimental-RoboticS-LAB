@@ -7,6 +7,8 @@
                :std_msgs-msg
 )
   :components ((:file "_package")
+    (:file "BallState" :depends-on ("_package_BallState"))
+    (:file "_package_BallState" :depends-on ("_package"))
     (:file "PlanningAction" :depends-on ("_package_PlanningAction"))
     (:file "_package_PlanningAction" :depends-on ("_package"))
     (:file "PlanningActionFeedback" :depends-on ("_package_PlanningActionFeedback"))

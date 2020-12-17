@@ -24,74 +24,76 @@ import rospy
 import actionlib
 from std_msgs.msg import String, Float64
 from exp_assignment2.msg import *
+from exp_assignment2.msg import BallState
 from geometry_msgs.msg import Twist, Point, Pose
 from nav_msgs.msg import Odometry
-
-# Global Constants
-## Initialize target x position
-x_pos = 0
-## Initialize target y position
-y_pos = 0
 
 ## Define home x position 
 x_home = -6
 ## Define home y position 
-y_home = -6
+y_home = 6
 
 ## Define person x position 
-x_person = 0
+#x_person = 0
 ## Define person x position
-y_person = 0
+#y_person = 0
 
 ## Initial state
-# state = 'NoInfo'
+
+BallDetected = False
+BallCheck = False
+
+
+client = actionlib.SimpleActionClient('/robot/reaching_goal_robot', exp_assignment2.msg.PlanningAction)
 
 # Functions 
 def decision():
     """! return random state between GoTonormal or GoToSleep"""
     return random.choice(['GoToNormal','GoToSleep'])
 
+# Pub that moves head 
+
 def head_control():
 
-    pub = rospy.Publisher('/robot/joint_head_controller/command', Float64, queue_size=1)
+    pub_stop = rospy.Publisher("/robot/cmd_vel", Twist, queue_size=1)                                   
+    pub_head = rospy.Publisher('/robot/joint_head_controller/command', Float64, queue_size=1)
     rate = rospy.Rate(1)
     ctrl_c = False
       
     while not ctrl_c:
         ## Check the connection in ordet to be sure to publish
-        connections = pub.get_num_connections()
-        if connections > 0:    
+        connections = pub_head.get_num_connections()
+        if connections > 0:
+            rospy.loginfo('wooof!')
+            stop = Twist()
+            stop.angular.z = 0
+            stop.linear.x = 0
+            pub_stop.publish(stop)
+            
             for i in [-math.pi/4, 0 , math.pi/4, 0]:
+                
                 position_head = i
-                rospy.loginfo(position_head)
-                pub.publish(position_head)
+                #rospy.loginfo('looking around at %d',position_head)
+                pub_head.publish(position_head)
                 time.sleep(3)
                 ctrl_c = True
-            else:
-                ## If the connection is 0 sleep and restart the loop
-                rate.sleep()
+            time.sleep(5)
+        else:
+            ## If the connection is 0 sleep and restart the loop
+            rate.sleep()
 
+def callback_check(data):
 
-# def callback_pos(data):
-    """! Callback related to target position
-    @param x_pos x positon of the robot
-    @param y_pos y position of the robot
-    """
-#    global x_pos
-#    x_pos = data.linear.x
-#    global y_pos 
-#    y_pos = data.linear.y
+    """! Callback related to ball detection"""
+    global BallDetected, BallCheck, currentRadius
+    BallDetected = data.BallDetected
+    currentRadius = data.currentRadius
 
-#def callback_user(data):
-    """! Callback related to user command request 
-    @param state string that actives the PLAY state
-    """
-#    rospy.loginfo(rospy.get_caller_id() + 'I heard %s', data.data)
-#    global state
-#    state = "play"
+    if (BallDetected == True) and (BallCheck == False):
+        BallCheck = True
+        rospy.loginfo("Ball Detected! Start tracking ")
+        client.cancel_all_goals()
 
-# define a client to call later in the normal and sleep behaviour 
-client = actionlib.SimpleActionClient('/robot/reaching_goal_robot', exp_assignment2.msg.PlanningAction)
 
 class Normal(smach.State):
     """! Define normal state """
@@ -105,7 +107,7 @@ class Normal(smach.State):
                              outcomes=['GoToNormal','GoToSleep','GoToPlay'])
                              #input_keys=['unlocked_counter_in'],
                              #output_keys=['unlocked_counter_out'])
-        #self.rate = rospy.Rate(1) 
+        self.rate = rospy.Rate(1) 
         self.counter = 0
     
     def execute(self,userdata):
@@ -119,6 +121,8 @@ class Normal(smach.State):
         # global x_pos
         # global y_pos
         # global state
+
+        global BallDetected
         
         self.counter = random.randint(1,2)
         goal = exp_assignment2.msg.PlanningGoal()
@@ -126,11 +130,10 @@ class Normal(smach.State):
         while not rospy.is_shutdown():  
             #rospy.loginfo(rospy.get_caller_id() + 'Executing state NORMAL ')
             #time.sleep(1)
-
-            #if state == "play":
-            #    state = 'noInput'
-            #    return 'GoToPlay'
-
+            if (BallDetected == True) and (BallCheck == True):
+                rospy.loginfo("passo da normale a play flag preso")
+                return 'GoToPlay'
+        
             if self.counter == 3:
                 return 'GoToSleep'
             # Waits until the action server has started up and started listening for goals.             
@@ -145,9 +148,11 @@ class Normal(smach.State):
             #return client.get_result()
             client.wait_for_result()
             rospy.loginfo('i m arrived')
-            rospy.loginfo('Checking around...')
-            head_control()
-            print('Nothing interesting')
+            #rospy.loginfo('Checking around...')
+            #head_control()
+            #print('Nothing interesting')
+            time.sleep(2)
+            self.rate.sleep()
             self.counter += 1
 
         return 'GoToSleep'
@@ -165,7 +170,7 @@ class Sleep(smach.State):
                              #input_keys=['locked_counter_in'],
                              #output_keys=['locked_counter_out'])
         #self.sensor_input = 0
-        self.rate = rospy.Rate(50)  # Loop at 50 Hz
+        self.rate = rospy.Rate(200)  # Loop at 50 Hz
         
     def execute(self, userdata):
         """! Sleep state execution 
@@ -192,43 +197,38 @@ class Sleep(smach.State):
         return 'GoToNormal'
 
 class Play(smach.State):
-    """! Define Play state """
     def __init__(self):
-        """! initialisation function, it should not wait 
-        @param outcomes outcomes of the state
-        @param input_keys counter in
-        @param output_keys counter out
-        """
         smach.State.__init__(self, 
-                             outcomes=['GoToNormal','GoToPlay'])
-                             #input_keys=['locked_counter_in'],
-                             #output_keys=['locked_counter_out'])
-        
-        self.rate = rospy.Rate(50)  # Loop at 50 Hz
+                            outcomes=['GoToNormal','GoToPlay'])
+        #rospy.loginfo('sar il rate')
+        self.rate = rospy.Rate(200)  # Loop at 50 Hz
+        #rospy.loginfo('prima del exec')
 
     def execute(self, userdata):
-         """! Play state execution 
-        @param x_pos x positon of the robot
-        @param y_pos y position of the robot
-        @param x_home y position of home
-        @param y_home y position of home
-        @return GoToNormal state
-        """
-        #global x_pos
-        #global y_pos 
 
-        #nav_client(x_pos,y_pos)
-        #nav_client(x_person,y_person)
+        rospy.loginfo("Executing state PLAY")
 
-        #rospy.loginfo(' Executing state PLAY ')
-        #time.sleep(3)
-
-        #return 'GoToNormal'       
-
+        global currentRadius, BallDetected, BallCheck
+        while True:
+            
+            if (currentRadius > 90):
+                #rospy.loginfo('muovo la testa')
+                head_control()
+            if (BallDetected == False):
+                BallCheck = False
+                rospy.loginfo('WOOF! Palla Persa :(')
+                return 'GoToNormal'
+            rospy.loginfo('llop')
+            print(currentRadius)
+            print(BallDetected)
+            time.sleep(3)       
+        
 
 def main():
     
     rospy.init_node('smach_example_state_machine')
+    ##Node subscibes to Ball State topic
+    rospy.Subscriber('BallState', BallState, callback_check)
     client.wait_for_server()
     ## Node subscribes to chatter topic
     ## rospy.Subscriber('chatter', String, callback_user)

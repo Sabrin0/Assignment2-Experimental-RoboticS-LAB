@@ -33,6 +33,10 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/exp_assignment2/msg" TYPE FILE FILES "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/src/exp_assignment2/msg/BallState.msg")
+endif()
+
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/exp_assignment2/action" TYPE FILE FILES
     "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/src/exp_assignment2/action/Planning.action"
     "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/src/exp_assignment2/action/PlanningBall.action"

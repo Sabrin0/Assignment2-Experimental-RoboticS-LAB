@@ -8,6 +8,7 @@ file(REMOVE_RECURSE
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/include/exp_assignment2/PlanningBallGoal.h"
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/include/exp_assignment2/PlanningBallAction.h"
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/include/exp_assignment2/PlanningBallActionGoal.h"
+  "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/include/exp_assignment2/BallState.h"
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/include/exp_assignment2/PlanningActionResult.h"
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/include/exp_assignment2/PlanningResult.h"
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/include/exp_assignment2/PlanningBallActionResult.h"

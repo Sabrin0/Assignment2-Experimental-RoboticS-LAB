@@ -8,6 +8,7 @@ file(REMOVE_RECURSE
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/roseus/ros/exp_assignment2/msg/PlanningBallGoal.l"
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/roseus/ros/exp_assignment2/msg/PlanningBallAction.l"
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/roseus/ros/exp_assignment2/msg/PlanningBallActionGoal.l"
+  "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/roseus/ros/exp_assignment2/msg/BallState.l"
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/roseus/ros/exp_assignment2/msg/PlanningActionResult.l"
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/roseus/ros/exp_assignment2/msg/PlanningResult.l"
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/roseus/ros/exp_assignment2/msg/PlanningBallActionResult.l"

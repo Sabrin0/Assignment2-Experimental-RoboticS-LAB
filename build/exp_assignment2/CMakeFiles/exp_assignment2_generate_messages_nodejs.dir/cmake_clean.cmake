@@ -8,6 +8,7 @@ file(REMOVE_RECURSE
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/gennodejs/ros/exp_assignment2/msg/PlanningBallGoal.js"
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/gennodejs/ros/exp_assignment2/msg/PlanningBallAction.js"
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/gennodejs/ros/exp_assignment2/msg/PlanningBallActionGoal.js"
+  "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/gennodejs/ros/exp_assignment2/msg/BallState.js"
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/gennodejs/ros/exp_assignment2/msg/PlanningActionResult.js"
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/gennodejs/ros/exp_assignment2/msg/PlanningResult.js"
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/gennodejs/ros/exp_assignment2/msg/PlanningBallActionResult.js"

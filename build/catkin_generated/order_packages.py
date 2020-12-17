@@ -2,4 +2,4 @@
 source_root_dir = '/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/src'
 whitelisted_packages = ''.split(';') if '' != '' else []
 blacklisted_packages = ''.split(';') if '' != '' else []
-underlay_workspaces = '/opt/ros/kinetic'.split(';') if '/opt/ros/kinetic' != '' else []
+underlay_workspaces = '/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel;/opt/ros/kinetic'.split(';') if '/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel;/opt/ros/kinetic' != '' else []

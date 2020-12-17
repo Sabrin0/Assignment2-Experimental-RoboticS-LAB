@@ -1,8 +1,8 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(STATUS "exp_assignment2: 14 messages, 0 services")
+message(STATUS "exp_assignment2: 15 messages, 0 services")
 
-set(MSG_I_FLAGS "-Iexp_assignment2:/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg;-Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg;-Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg;-Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg")
+set(MSG_I_FLAGS "-Iexp_assignment2:/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/src/exp_assignment2/msg;-Iexp_assignment2:/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg;-Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg;-Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg;-Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg")
 
 # Find all generators
 find_package(gencpp REQUIRED)
@@ -55,6 +55,11 @@ add_custom_target(_exp_assignment2_generate_messages_check_deps_${_filename}
 get_filename_component(_filename "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningBallActionFeedback.msg" NAME_WE)
 add_custom_target(_exp_assignment2_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "exp_assignment2" "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningBallActionFeedback.msg" "actionlib_msgs/GoalID:std_msgs/Header:geometry_msgs/Quaternion:geometry_msgs/Point:geometry_msgs/Pose:exp_assignment2/PlanningBallFeedback:actionlib_msgs/GoalStatus"
+)
+
+get_filename_component(_filename "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/src/exp_assignment2/msg/BallState.msg" NAME_WE)
+add_custom_target(_exp_assignment2_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "exp_assignment2" "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/src/exp_assignment2/msg/BallState.msg" ""
 )
 
 get_filename_component(_filename "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningActionResult.msg" NAME_WE)
@@ -142,6 +147,12 @@ _generate_msg_cpp(exp_assignment2
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/exp_assignment2
 )
 _generate_msg_cpp(exp_assignment2
+  "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/src/exp_assignment2/msg/BallState.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/exp_assignment2
+)
+_generate_msg_cpp(exp_assignment2
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningActionResult.msg"
   "${MSG_I_FLAGS}"
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningResult.msg;/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg"
@@ -207,6 +218,8 @@ add_dependencies(exp_assignment2_generate_messages_cpp _exp_assignment2_generate
 get_filename_component(_filename "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningBallAction.msg" NAME_WE)
 add_dependencies(exp_assignment2_generate_messages_cpp _exp_assignment2_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningBallActionFeedback.msg" NAME_WE)
+add_dependencies(exp_assignment2_generate_messages_cpp _exp_assignment2_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/src/exp_assignment2/msg/BallState.msg" NAME_WE)
 add_dependencies(exp_assignment2_generate_messages_cpp _exp_assignment2_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningActionResult.msg" NAME_WE)
 add_dependencies(exp_assignment2_generate_messages_cpp _exp_assignment2_generate_messages_check_deps_${_filename})
@@ -279,6 +292,12 @@ _generate_msg_eus(exp_assignment2
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/exp_assignment2
 )
 _generate_msg_eus(exp_assignment2
+  "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/src/exp_assignment2/msg/BallState.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/exp_assignment2
+)
+_generate_msg_eus(exp_assignment2
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningActionResult.msg"
   "${MSG_I_FLAGS}"
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningResult.msg;/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg"
@@ -344,6 +363,8 @@ add_dependencies(exp_assignment2_generate_messages_eus _exp_assignment2_generate
 get_filename_component(_filename "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningBallAction.msg" NAME_WE)
 add_dependencies(exp_assignment2_generate_messages_eus _exp_assignment2_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningBallActionFeedback.msg" NAME_WE)
+add_dependencies(exp_assignment2_generate_messages_eus _exp_assignment2_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/src/exp_assignment2/msg/BallState.msg" NAME_WE)
 add_dependencies(exp_assignment2_generate_messages_eus _exp_assignment2_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningActionResult.msg" NAME_WE)
 add_dependencies(exp_assignment2_generate_messages_eus _exp_assignment2_generate_messages_check_deps_${_filename})
@@ -416,6 +437,12 @@ _generate_msg_lisp(exp_assignment2
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/exp_assignment2
 )
 _generate_msg_lisp(exp_assignment2
+  "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/src/exp_assignment2/msg/BallState.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/exp_assignment2
+)
+_generate_msg_lisp(exp_assignment2
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningActionResult.msg"
   "${MSG_I_FLAGS}"
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningResult.msg;/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg"
@@ -481,6 +508,8 @@ add_dependencies(exp_assignment2_generate_messages_lisp _exp_assignment2_generat
 get_filename_component(_filename "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningBallAction.msg" NAME_WE)
 add_dependencies(exp_assignment2_generate_messages_lisp _exp_assignment2_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningBallActionFeedback.msg" NAME_WE)
+add_dependencies(exp_assignment2_generate_messages_lisp _exp_assignment2_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/src/exp_assignment2/msg/BallState.msg" NAME_WE)
 add_dependencies(exp_assignment2_generate_messages_lisp _exp_assignment2_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningActionResult.msg" NAME_WE)
 add_dependencies(exp_assignment2_generate_messages_lisp _exp_assignment2_generate_messages_check_deps_${_filename})
@@ -553,6 +582,12 @@ _generate_msg_nodejs(exp_assignment2
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/exp_assignment2
 )
 _generate_msg_nodejs(exp_assignment2
+  "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/src/exp_assignment2/msg/BallState.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/exp_assignment2
+)
+_generate_msg_nodejs(exp_assignment2
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningActionResult.msg"
   "${MSG_I_FLAGS}"
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningResult.msg;/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg"
@@ -618,6 +653,8 @@ add_dependencies(exp_assignment2_generate_messages_nodejs _exp_assignment2_gener
 get_filename_component(_filename "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningBallAction.msg" NAME_WE)
 add_dependencies(exp_assignment2_generate_messages_nodejs _exp_assignment2_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningBallActionFeedback.msg" NAME_WE)
+add_dependencies(exp_assignment2_generate_messages_nodejs _exp_assignment2_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/src/exp_assignment2/msg/BallState.msg" NAME_WE)
 add_dependencies(exp_assignment2_generate_messages_nodejs _exp_assignment2_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningActionResult.msg" NAME_WE)
 add_dependencies(exp_assignment2_generate_messages_nodejs _exp_assignment2_generate_messages_check_deps_${_filename})
@@ -690,6 +727,12 @@ _generate_msg_py(exp_assignment2
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/exp_assignment2
 )
 _generate_msg_py(exp_assignment2
+  "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/src/exp_assignment2/msg/BallState.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/exp_assignment2
+)
+_generate_msg_py(exp_assignment2
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningActionResult.msg"
   "${MSG_I_FLAGS}"
   "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningResult.msg;/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg/GoalID.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg/GoalStatus.msg"
@@ -756,6 +799,8 @@ get_filename_component(_filename "/home/sabrino/exprob/Assignment2-Experimental-
 add_dependencies(exp_assignment2_generate_messages_py _exp_assignment2_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningBallActionFeedback.msg" NAME_WE)
 add_dependencies(exp_assignment2_generate_messages_py _exp_assignment2_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/src/exp_assignment2/msg/BallState.msg" NAME_WE)
+add_dependencies(exp_assignment2_generate_messages_py _exp_assignment2_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningActionResult.msg" NAME_WE)
 add_dependencies(exp_assignment2_generate_messages_py _exp_assignment2_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/sabrino/exprob/Assignment2-Experimental-RoboticS-LAB/devel/share/exp_assignment2/msg/PlanningBallActionResult.msg" NAME_WE)
@@ -791,6 +836,9 @@ endif()
 if(TARGET actionlib_msgs_generate_messages_cpp)
   add_dependencies(exp_assignment2_generate_messages_cpp actionlib_msgs_generate_messages_cpp)
 endif()
+if(TARGET std_msgs_generate_messages_cpp)
+  add_dependencies(exp_assignment2_generate_messages_cpp std_msgs_generate_messages_cpp)
+endif()
 
 if(geneus_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/exp_assignment2)
   # install generated code
@@ -804,6 +852,9 @@ if(TARGET geometry_msgs_generate_messages_eus)
 endif()
 if(TARGET actionlib_msgs_generate_messages_eus)
   add_dependencies(exp_assignment2_generate_messages_eus actionlib_msgs_generate_messages_eus)
+endif()
+if(TARGET std_msgs_generate_messages_eus)
+  add_dependencies(exp_assignment2_generate_messages_eus std_msgs_generate_messages_eus)
 endif()
 
 if(genlisp_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/exp_assignment2)
@@ -819,6 +870,9 @@ endif()
 if(TARGET actionlib_msgs_generate_messages_lisp)
   add_dependencies(exp_assignment2_generate_messages_lisp actionlib_msgs_generate_messages_lisp)
 endif()
+if(TARGET std_msgs_generate_messages_lisp)
+  add_dependencies(exp_assignment2_generate_messages_lisp std_msgs_generate_messages_lisp)
+endif()
 
 if(gennodejs_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/exp_assignment2)
   # install generated code
@@ -832,6 +886,9 @@ if(TARGET geometry_msgs_generate_messages_nodejs)
 endif()
 if(TARGET actionlib_msgs_generate_messages_nodejs)
   add_dependencies(exp_assignment2_generate_messages_nodejs actionlib_msgs_generate_messages_nodejs)
+endif()
+if(TARGET std_msgs_generate_messages_nodejs)
+  add_dependencies(exp_assignment2_generate_messages_nodejs std_msgs_generate_messages_nodejs)
 endif()
 
 if(genpy_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/exp_assignment2)
@@ -847,4 +904,7 @@ if(TARGET geometry_msgs_generate_messages_py)
 endif()
 if(TARGET actionlib_msgs_generate_messages_py)
   add_dependencies(exp_assignment2_generate_messages_py actionlib_msgs_generate_messages_py)
+endif()
+if(TARGET std_msgs_generate_messages_py)
+  add_dependencies(exp_assignment2_generate_messages_py std_msgs_generate_messages_py)
 endif()
