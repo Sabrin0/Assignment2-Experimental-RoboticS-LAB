@@ -131,7 +131,7 @@ class Normal(smach.State):
             #rospy.loginfo(rospy.get_caller_id() + 'Executing state NORMAL ')
             #time.sleep(1)
             if (BallDetected == True) and (BallCheck == True):
-                rospy.loginfo("passo da normale a play flag preso")
+                #rospy.loginfo("passo da normale a play flag preso")
                 return 'GoToPlay'
         
             if self.counter == 3:
@@ -218,9 +218,9 @@ class Play(smach.State):
                 BallCheck = False
                 rospy.loginfo('WOOF! Palla Persa :(')
                 return 'GoToNormal'
-            rospy.loginfo('llop')
-            print(currentRadius)
-            print(BallDetected)
+
+            #print(currentRadius)
+            #print(BallDetected)
             time.sleep(3)       
         
 
@@ -228,7 +228,7 @@ def main():
     
     rospy.init_node('smach_example_state_machine')
     ##Node subscibes to Ball State topic
-    rospy.Subscriber('BallState', BallState, callback_check)
+    rospy.Subscriber('/robot/BallState', BallState, callback_check)
     client.wait_for_server()
     ## Node subscribes to chatter topic
     ## rospy.Subscriber('chatter', String, callback_user)

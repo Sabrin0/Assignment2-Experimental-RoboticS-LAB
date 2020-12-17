@@ -37,7 +37,7 @@ class image_feature:
                                        Twist, queue_size=1)
 
         # flag for ball detected
-        self.BallDet_pub = rospy.Publisher("BallState", BallState, queue_size=1)
+        self.BallDet_pub = rospy.Publisher("/robot/BallState", BallState, queue_size=1)
         #self.head_control_pub = rospy.Publisher('/robot/joint_head_controller/command', Float64, queue_size=1)
         # subscribed Topic
         self.subscriber = rospy.Subscriber("/robot/camera1/image_raw/compressed",

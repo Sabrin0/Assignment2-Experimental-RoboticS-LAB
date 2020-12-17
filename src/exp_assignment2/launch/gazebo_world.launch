@@ -70,15 +70,16 @@
         --shutdown-timeout 3">
     </node>
 
-    <node name = "go_to_point_action" pkg="exp_assignment2" type="go_to_point_action.py" output="screen"/> 
-    <!-- <node name = "BallDetection" pkg="exp_assignment2" type="BallDetection.py" /> -->
+    <node name = "go_to_point_action" pkg="exp_assignment2" type="go_to_point_action.py" /> 
+    <node name = "BallDetection" pkg="exp_assignment2" type="BallDetection.py" />
+    <node name = "CommandManager" pkg="exp_assignment2" type="cmd_man.py" output="screen" />
     <!-- <node name = "motion_client" pkg="exp_assignment2" type="motion_client.py"  output="screen" /> -->
   </group>
   
   <group ns="$(arg ns2)">
   	<node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
 	args="-urdf -model $(arg ns2) -param ball_description -x -7 -y -6 -z 0.5"/>
-	<node name="position_server" pkg="exp_assignment2" type="go_to_point_ball.py" output="screen" />
+	<node name="position_server" pkg="exp_assignment2" type="go_to_point_ball.py" />
   </group>
 
 </launch>
