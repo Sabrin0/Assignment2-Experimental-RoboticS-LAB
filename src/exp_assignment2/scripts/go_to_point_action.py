@@ -1,8 +1,16 @@
 #! /usr/bin/env python
-# import ros stuff
+
+"""!
+@package dockstring
+@section description
+Action Server
+This simple action server allows the robot to reach a goal.
+It recives the goal from the FSM (cmd_man) and it could be interrupted if the ball is detected.
+"""
+## import ros stuff
 import rospy
 from sensor_msgs.msg import LaserScan
-# import the  message  classes
+## import the  message  classes
 from geometry_msgs.msg import Twist, Point, Pose
 from nav_msgs.msg import Odometry
 from tf import transformations

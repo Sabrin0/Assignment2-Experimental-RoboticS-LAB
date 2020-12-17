@@ -1,6 +1,15 @@
 #!/usr/bin/env python
 
-# Python libs
+"""!
+@package dockstring
+@section description
+OpenCV node
+This node is responsible for the ball detection.
+In particular, once the ball is detected, it implemnt a simple algorith in order to track the ball untill the goal is reached.
+It also publishes on the topic BallState in order to communicate with the cmd_man when the ball is detected and when the robot is next to it.
+"""
+
+## Python libs
 import sys
 import time
 import math
@@ -10,14 +19,14 @@ from scipy.ndimage import filters
 
 import imutils
 
-# OpenCV
+## OpenCV
 import cv2
 
-# Ros libraries
+## Ros libraries
 import roslib
 import rospy
 
-# Ros Messages
+## Ros Messages
 from sensor_msgs.msg import CompressedImage
 from geometry_msgs.msg import Twist
 from std_msgs.msg import Float64
@@ -28,18 +37,17 @@ VERBOSE = False
 class image_feature:
 
     def __init__(self):
-        '''Initialize ros publisher, ros subscriber'''
+        '''! Initialize ros publisher, ros subscriber'''
         rospy.init_node('BallDetection', anonymous=True)
-     # topic where we publish
+        ## topic where we publish
         self.image_pub = rospy.Publisher("/output/image_raw/compressed",
                                          CompressedImage, queue_size=1)
         self.vel_pub = rospy.Publisher("/robot/cmd_vel",
                                        Twist, queue_size=1)
 
-        # flag for ball detected
+        ## flag for ball detected
         self.BallDet_pub = rospy.Publisher("/robot/BallState", BallState, queue_size=1)
-        #self.head_control_pub = rospy.Publisher('/robot/joint_head_controller/command', Float64, queue_size=1)
-        # subscribed Topic
+
         self.subscriber = rospy.Subscriber("/robot/camera1/image_raw/compressed",
                                            CompressedImage, self.callback,  queue_size=1)
 
@@ -68,7 +76,7 @@ class image_feature:
                                 cv2.CHAIN_APPROX_SIMPLE)
         cnts = imutils.grab_contours(cnts)
         center = None
-        # only proceed if at least one contour was found
+        ## only proceed if at least one contour was found
         if len(cnts) > 0:
             # find the largest contour in the mask, then use
             # it to compute the minimum enclosing circle and
@@ -77,45 +85,22 @@ class image_feature:
             ((x, y), radius) = cv2.minEnclosingCircle(c)
             M = cv2.moments(c)
             center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
-            
-            #Pub the message if the ball is detected
-            #msg_BallState = BallState()
-            #msg_BallState.BallDetected = True
-            #rospy.loginfo("Palla cuzzata")
-            #self.BallDet_pub.publish(msg_BallState)
 
-            # only proceed if the radius meets a minimum size
+            ## only proceed if the radius meets a minimum size
             if (radius > 10):
-
-                #if radius == 30:
 
                 # draw the circle and centroid on the frame,
                 # then update the list of tracked points
                 cv2.circle(image_np, (int(x), int(y)), int(radius),
                            (0, 255, 255), 2)
                 cv2.circle(image_np, center, 5, (0, 0, 255), -1)
-                
-                #if(radius > 90) and abs(center[0]-400)<5:
-                    # then update the list of tracked points
-                    #cv2.circle(image_np, (int(x), int(y)), int(radius),
-                    #       (0, 255, 255), 2)
-                    #cv2.circle(image_np, center, 5, (0, 0, 255), -1)
-                    #msg_BallState = BallState()
-                    #msg_BallState.BallStopped = True
-                    #msg_BallState.BallDetected = True
-                    #self.BallDet_pub.publish(msg_BallState)   
-                    #rospy.loginfo('sono vicino aspetto %d',radius)
-                    #cv2.imshow('window', image_np)
-                    #cv2.waitKey(2)
-                
+
                 vel = Twist()
                 vel.angular.z = -0.002*(center[0]-400)
                 vel.linear.x = -0.01*(radius-100)
                 self.vel_pub.publish(vel)
-                #cosa = center[0]-400
                 rospy.loginfo("Mi avvicino %d", radius)
                 msg_BallState = BallState()
-                #msg_BallState.BallStopped = False
                 msg_BallState.BallDetected = True
                 msg_BallState.currentRadius = radius
                 self.BallDet_pub.publish(msg_BallState)
@@ -128,18 +113,15 @@ class image_feature:
 
             msg_BallState = BallState()
             msg_BallState.BallDetected = False
-            rospy.loginfo("Palla persa :(")
+            rospy.loginfo("Ball lost :(")
             self.BallDet_pub.publish(msg_BallState)
-            #vel = Twist()
-            #vel.angular.z = 0.5
-            #self.vel_pub.publish(vel)
 
         # update the points queue
         # pts.appendleft(center)
         cv2.imshow('window', image_np)
         cv2.waitKey(2)
 
-            # self.subscriber.unregister()
+        # self.subscriber.unregister()
 
 
 def main(args):

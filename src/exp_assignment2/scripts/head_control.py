@@ -1,12 +1,20 @@
 #!/usr/bin/env python
-
+"""!
+@package dockstring
+@section description
+Head Control Test Node 
+This node was implemented only for test the control of the head joint while the CV node was running.
+ """
+## Imports
 import rospy
 from std_msgs.msg import Float64
 import math
 import time
 
+## Initialization of the node
 rospy.init_node('head_ctrl', anonymous = True)
 
+## Pub on the topic related to the joint cntroller 
 pub = rospy.Publisher('/robot/joint_head_controller/command', Float64, queue_size=1)
 rate = rospy.Rate(1)
 ctrl_c = False
