@@ -1,4 +1,4 @@
-# Assignment2-Experimental-RoboticS-LAB
+# Experimental Robotics LAB: Second Assignment
 
 ## Introduction 
 
@@ -68,8 +68,9 @@ $ rosrun exp_assignment2 head_control.py
 
 ```
 
-# Contacts
+### Contacts
 
-Luca Covizzi luca@francocovizzi.it
+Luca Covizzi 
+luca@francocovizzi.it
 
 
